@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" layoutX="50.0" layoutY="60.0" spacing="5.0">
+         <children>
+            <Label text="From account:" />
+            <ChoiceBox prefWidth="150.0" />
+            <Label text="To account:" />
+            <ChoiceBox prefWidth="150.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

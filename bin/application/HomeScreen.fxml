@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainScreenController">
+   <children>
+      <BorderPane minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0">
+         <top>
+            <Label contentDisplay="CENTER" styleClass="text-heading" text="Ztrum Economics" textAlignment="CENTER" textFill="#850097" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Lucida Sans Regular" size="36.0" />
+               </font>
+            </Label>
+         </top>
+         <left>
+            <Accordion BorderPane.alignment="CENTER">
+              <panes>
+                <TitledPane animated="false" text="Home">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label onMouseExited="#registerTransaction" onTouchReleased="#registerTransaction" text="Register Transaction" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                </TitledPane>
+                <TitledPane animated="false" text="Statistics">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                </TitledPane>
+                <TitledPane animated="false" text="Settings">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                </TitledPane>
+              </panes>
+            </Accordion>
+         </left>
+      </BorderPane>
+   </children>
+</AnchorPane>
