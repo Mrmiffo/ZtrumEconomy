@@ -11,4 +11,8 @@ public final class AccountDistribution {
 		this.account = account;
 		this.value = value;
 	}
+	
+	public String toString(){
+		return "Account: " + account.getId() + " Value: " + value;
+	}
 }

@@ -23,7 +23,7 @@ public class Transaction implements Serializable {
 	private final List<AccountDistribution> creditAccounts;
 	private final List<String> tags;
 	
-	public Transaction(String description, Date date, List<AccountDistribution> debitAccounts, List<AccountDistribution> creditAccount, String... tags) throws InvalidTransactionException{
+	public Transaction(String description, Date date, List<AccountDistribution> debitAccounts, List<AccountDistribution> creditAccount, List<String> tags) throws InvalidTransactionException{
 		this.date = (Date) date.clone();
 		this.description = description;
 		this.tags = new ArrayList<>();
@@ -101,6 +101,26 @@ public class Transaction implements Serializable {
 	 */
 	public String getDescription() {
 		return description;
+	}
+	
+	public String toString(){
+		String toReturn = "ID: " + id + " Description: "+ description + " Date: " + date.toString() + " ";
+		toReturn = toReturn + "DebitAcc: ";
+		for (AccountDistribution acc: debitAccounts){
+			toReturn = toReturn + acc.toString() + " ";
+		}
+		toReturn = toReturn + "CreditAcc: ";
+		for (AccountDistribution acc: creditAccounts){
+			toReturn = toReturn + acc.toString() + " ";
+		}
+		toReturn = toReturn + "Tags: ";
+		for (int i = 0; i < tags.size(); i++){
+			toReturn = toReturn + tags.get(i);
+			if (i < tags.size()-1){
+				toReturn = toReturn + ", ";
+			}
+		}
+		return toReturn;
 	}
 	
 }

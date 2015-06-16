@@ -91,11 +91,9 @@ public class Book {
 			debit.addAll(fromAccounts);
 			credit.add(toAccount);
 		}
-		
-		
-		
-		Transaction transactionToAdd = new Transaction(description, date,debit, credit, (String[])tags.toArray());
+		Transaction transactionToAdd = new Transaction(description, date,debit, credit, tags);
 		transactions.add(transactionToAdd);
+		transactions.sort(new TransactionDateCompare());
 	}
 	
 	/**
@@ -136,6 +134,22 @@ public class Book {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public List<Transaction> getTransactions(){
+		return new ArrayList<Transaction>(transactions);
+	}
+	
+	public List<Transaction> getTransactions(Date from, Date to){
+		List<Transaction> toReturn = new ArrayList<>();
+		for (Transaction tran: transactions){
+			if (tran.getDate().after(from) && tran.getDate().before(to)){
+				toReturn.add(tran);
+			} else if (tran.getDate().before(from)){
+				break;
+			}
+		}
+		return toReturn;
 	}
 	
 }
