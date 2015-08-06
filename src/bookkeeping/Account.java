@@ -1,6 +1,9 @@
 package bookkeeping;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class Account implements Serializable{
 	/**
@@ -10,11 +13,27 @@ public class Account implements Serializable{
 	private int id;
 	private String name;
 	private final AccountType accType;
+	private List<Transaction> transactions;
 	
 	public Account(String name, int id, AccountType accType){
 		this.setId(id);
 		this.setName(name);
 		this.accType = accType;
+	}
+	
+	/**
+	 * Creates a new transaction and adds it to the list of transactions in the book.
+	 * @param description The description (name) of the transaction
+	 * @param date The date when the transaction was created.
+	 * @param debitAccount the specification of how the debits are distributed.
+	 * @param creditAccount the specification of how the credits are distributed.
+	 * @param tags tags for the transaction for reporting purposes.
+	 * @throws InvalidTransactionException if the debit and credit values do not match
+	 * @throws InvalidAccountException if any of the accounts specified does not exist.
+	 */
+	void addTransaction(Transaction transaction) throws InvalidTransactionException, InvalidAccountException {
+		transactions.add(transaction);
+		transactions.sort(new TransactionDateCompare());
 	}
 
 	/**
