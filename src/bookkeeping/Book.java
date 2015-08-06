@@ -8,12 +8,10 @@ public class Book {
 	private static int createdBooks;
 	private final int id;
 	private String name;
-	private List<Transaction> transactions;
 	private List<Account> availableAccounts;
 	
 	public Book(String name){
 		this.setName(name);
-		transactions = new ArrayList<>();
 		availableAccounts = new ArrayList<>();
 		createdBooks++;
 		id = createdBooks;
@@ -61,40 +59,6 @@ public class Book {
 		}
 	}
 	
-	/**
-	 * Creates a new transaction and adds it to the list of transactions in the book.
-	 * @param description The description (name) of the transaction
-	 * @param date The date when the transaction was created.
-	 * @param debitAccount the specification of how the debits are distributed.
-	 * @param creditAccount the specification of how the credits are distributed.
-	 * @param tags tags for the transaction for reporting purposes.
-	 * @throws InvalidTransactionException if the debit and credit values do not match
-	 * @throws InvalidAccountException if any of the accounts specified does not exist.
-	 */
-	public void addTransaction(String description, Date date, AccountDistribution toAccount, List<AccountDistribution> fromAccounts, List<String> tags) throws InvalidTransactionException, InvalidAccountException {
-		if (!availableAccounts.contains(toAccount.account)){
-			throw new InvalidAccountException("No such account exist.");
-		}
-		
-		for (AccountDistribution acc: fromAccounts){
-			if (!availableAccounts.contains(acc.account)){
-				throw new InvalidAccountException("No such account exist.");
-			}
-		}
-		
-		List<AccountDistribution> debit = new ArrayList<>();
-		List<AccountDistribution> credit = new ArrayList<>();
-		if (toAccount.account.getAccType() == AccountType.SAVINGS || toAccount.account.getAccType() == AccountType.EXPENSE){
-			debit.add(toAccount);
-			credit.addAll(fromAccounts);
-		} else {
-			debit.addAll(fromAccounts);
-			credit.add(toAccount);
-		}
-		Transaction transactionToAdd = new Transaction(description, date,debit, credit, tags);
-		transactions.add(transactionToAdd);
-		transactions.sort(new TransactionDateCompare());
-	}
 	
 	/**
 	 * Returns the account with the specified account id.
@@ -113,6 +77,10 @@ public class Book {
 			throw new InvalidAccountException("No such account exist.");
 		}
 		return accToReturn;
+	}
+	
+	public boolean containsAccount(Account account){
+		return availableAccounts.contains(account);
 	}
 
 	/**
@@ -134,22 +102,6 @@ public class Book {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public List<Transaction> getTransactions(){
-		return new ArrayList<Transaction>(transactions);
-	}
-	
-	public List<Transaction> getTransactions(Date from, Date to){
-		List<Transaction> toReturn = new ArrayList<>();
-		for (Transaction tran: transactions){
-			if (tran.getDate().after(from) && tran.getDate().before(to)){
-				toReturn.add(tran);
-			} else if (tran.getDate().before(from)){
-				break;
-			}
-		}
-		return toReturn;
 	}
 	
 }

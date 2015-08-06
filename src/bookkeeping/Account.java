@@ -1,20 +1,33 @@
 package bookkeeping;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Account implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4003528843342169804L;
 	private int id;
 	private String name;
 	private final AccountType accType;
+	private List<Transaction> transactions;
 	
 	public Account(String name, int id, AccountType accType){
 		this.setId(id);
 		this.setName(name);
 		this.accType = accType;
+		transactions = new ArrayList<>();
+	}
+	
+	/**
+	 * Adds the given transaction the the list of transactions in the 
+	 */
+	void addTransaction(Transaction transaction){
+		transactions.add(transaction);
+		sortDate();
+	}
+
+	private void sortDate() {
+		transactions.sort(new TransactionDateCompare());
 	}
 
 	/**
@@ -50,6 +63,16 @@ public class Account implements Serializable{
 	 */
 	public AccountType getAccType() {
 		return accType;
+	}
+	
+	public List<Transaction> getTransactions(){
+		List<Transaction> toReturn = new ArrayList<>();
+		toReturn.addAll(transactions);
+		return toReturn;
+	}
+	
+	public String toString(){
+		return "ID: " + id + " Name: " + name;
 	}
 	
 	public boolean equals(Object o){
