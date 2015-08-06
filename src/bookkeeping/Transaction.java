@@ -11,9 +11,6 @@ import java.util.List;
  *
  */
 public class Transaction implements Serializable {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4607059024467658524L;
 	private static int createdTransactions;
 	private final int id;
@@ -21,14 +18,16 @@ public class Transaction implements Serializable {
 	private final String description;
 	private final double value;
 	private final List<Tag> tags = new ArrayList<>();
+	private final TransactionType tranType;
 	
-	public Transaction(String description, Date date, double value, List<Tag> tags) throws InvalidTransactionException{
+	public Transaction(String description, Date date, double value, List<Tag> tags, TransactionType tranType){
 		this.date = (Date) date.clone();
 		this.description = description;
 		this.value = value;
-		tags.addAll(tags);
+		this.tags.addAll(tags);
 		createdTransactions++;
 		id = createdTransactions;
+		this.tranType = tranType;		
 	}
 	
 	
@@ -55,7 +54,10 @@ public class Transaction implements Serializable {
 	}
 	
 	public String toString(){
-		String toReturn = "ID: " + id + " Description: "+ description + " Date: " + date.toString() + " Value: " + value;;
+		String toReturn = "ID: " + id + " Description: "+ description + " Date: " + date.toString() + " Value: " + value + " Transaction type: " + tranType.name() + " Tags:";
+		for (Tag tag: tags){
+			toReturn = toReturn + tag.getName() + " ";
+		}
 		return toReturn;
 	}
 
@@ -66,6 +68,15 @@ public class Transaction implements Serializable {
 	 */
 	public List<Tag> getTags() {
 		return tags;
+	}
+
+
+
+	/**
+	 * @return the tranType
+	 */
+	public TransactionType getTranType() {
+		return tranType;
 	}
 	
 }

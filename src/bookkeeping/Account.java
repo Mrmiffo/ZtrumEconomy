@@ -1,12 +1,10 @@
 package bookkeeping;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Account implements Serializable{
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4003528843342169804L;
 	private int id;
 	private String name;
@@ -17,20 +15,18 @@ public class Account implements Serializable{
 		this.setId(id);
 		this.setName(name);
 		this.accType = accType;
+		transactions = new ArrayList<>();
 	}
 	
 	/**
-	 * Creates a new transaction and adds it to the list of transactions in the book.
-	 * @param description The description (name) of the transaction
-	 * @param date The date when the transaction was created.
-	 * @param debitAccount the specification of how the debits are distributed.
-	 * @param creditAccount the specification of how the credits are distributed.
-	 * @param tags tags for the transaction for reporting purposes.
-	 * @throws InvalidTransactionException if the debit and credit values do not match
-	 * @throws InvalidAccountException if any of the accounts specified does not exist.
+	 * Adds the given transaction the the list of transactions in the 
 	 */
-	void addTransaction(Transaction transaction) throws InvalidTransactionException, InvalidAccountException {
+	void addTransaction(Transaction transaction){
 		transactions.add(transaction);
+		sortDate();
+	}
+
+	private void sortDate() {
 		transactions.sort(new TransactionDateCompare());
 	}
 
@@ -67,6 +63,16 @@ public class Account implements Serializable{
 	 */
 	public AccountType getAccType() {
 		return accType;
+	}
+	
+	public List<Transaction> getTransactions(){
+		List<Transaction> toReturn = new ArrayList<>();
+		toReturn.addAll(transactions);
+		return toReturn;
+	}
+	
+	public String toString(){
+		return "ID: " + id + " Name: " + name;
 	}
 	
 	public boolean equals(Object o){
