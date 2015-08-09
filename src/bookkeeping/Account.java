@@ -11,7 +11,7 @@ public class Account implements Serializable{
 	private final AccountType accType;
 	private List<Transaction> transactions;
 	
-	public Account(String name, int id, AccountType accType){
+	Account(String name, int id, AccountType accType){
 		this.setId(id);
 		this.setName(name);
 		this.accType = accType;

@@ -20,7 +20,7 @@ public class Transaction implements Serializable {
 	private final List<Tag> tags = new ArrayList<>();
 	private final TransactionType tranType;
 	
-	public Transaction(String description, Date date, double value, List<Tag> tags, TransactionType tranType){
+	Transaction(String description, Date date, double value, List<Tag> tags, TransactionType tranType){
 		this.date = (Date) date.clone();
 		this.description = description;
 		this.value = value;
