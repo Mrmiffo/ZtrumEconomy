@@ -7,66 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainScreenController">
+<AnchorPane minHeight="1050.0" minWidth="1920.0" prefHeight="1050.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainScreenController">
    <children>
-      <BorderPane minHeight="600.0" minWidth="800.0" prefHeight="600.0" prefWidth="800.0">
-         <top>
-            <Label fx:id="title" contentDisplay="CENTER" styleClass="text-heading" text="Ztrum Economics" textAlignment="CENTER" textFill="#850097" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Lucida Sans Regular" size="36.0" />
-               </font>
-            </Label>
-         </top>
-         <left>
-            <Accordion BorderPane.alignment="CENTER">
-              <panes>
-                <TitledPane animated="false" text="Home">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <Label onMouseExited="#registerTransaction" onTouchReleased="#registerTransaction" text="Register Transaction" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                  </content>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                </TitledPane>
-                <TitledPane animated="false" text="Statistics">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                </TitledPane>
-                <TitledPane animated="false" text="Settings">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                  </content>
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                </TitledPane>
-              </panes>
-            </Accordion>
-         </left>
-         <center>
-            <AnchorPane fx:id="centerPanel" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-         </center>
-         <right>
-            <ScrollPane fx:id="rightPanel" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-              </content>
-            </ScrollPane>
-         </right>
+      <BorderPane layoutX="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
-            <GridPane BorderPane.alignment="CENTER">
+            <GridPane fx:id="buttomPanel" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -78,6 +23,30 @@
               </rowConstraints>
             </GridPane>
          </bottom>
+         <left>
+            <VBox fx:id="buttonPanel" prefHeight="200.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="registerButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseReleased="#registerButton" text="Register" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="historyButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="History" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="graphButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Graph" VBox.vgrow="ALWAYS" />
+                  <Button fx:id="settingsButton" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Settings" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </left>
+         <top>
+            <HBox fx:id="titleBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="title" text="Ztrum Economy">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </top>
+         <center>
+            <HBox fx:id="centerPanel" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>
