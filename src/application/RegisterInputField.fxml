@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import application.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root spacing="5.0" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox>
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label text="Value:" />
+                  <DoubleTextField fx:id="valueField" promptText="Value" />
+                  <Label text="Account:" />
+                  <ChoiceBox prefWidth="150.0" />
+                  <Label text="Tags:" />
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <ScrollPane maxHeight="100.0" maxWidth="200.0" minHeight="20.0" minWidth="200.0" prefHeight="80.0" prefWidth="200.0">
+        <content>
+            <ListView fx:id="tagsPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+        </content>
+      </ScrollPane>
+   </children>
+   <padding>
+      <Insets top="5.0" />
+   </padding>
+</fx:root>
