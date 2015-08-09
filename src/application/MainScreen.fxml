@@ -34,13 +34,23 @@
             </VBox>
          </left>
          <top>
-            <HBox fx:id="titleBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="titleBox" alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="title" text="Ztrum Economy">
+                  <Label fx:id="title" alignment="TOP_LEFT" text="Ztrum Economy">
                      <font>
                         <Font size="48.0" />
                      </font>
                   </Label>
+                  <VBox alignment="BOTTOM_LEFT">
+                     <children>
+                        <MenuButton fx:id="bookMenu" mnemonicParsing="false" text="Book">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                          </items>
+                        </MenuButton>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </top>

@@ -1,11 +1,12 @@
 package application;
 
-import java.io.IOException;
+import java.util.List;
 
+import bookkeeping.Book;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -35,8 +36,15 @@ public class MainScreenController {
 	@FXML
 	private Button settingsButton;
 	
+	@FXML
+	private MenuButton bookMenu;
+	
 	public MainScreenController(){
 
+	}
+	
+	public MainScreenController(List<Book> books){
+		
 	}
 	
 	public void initialize(){
@@ -45,7 +53,7 @@ public class MainScreenController {
 	
 	@FXML
 	private void registerButton(){
-		ScrollPane registerTransactionScreen = new RegisterTransactionController();
+		ScrollPane registerTransactionScreen = new RegisterTransaction();
 		centerPanel.getChildren().setAll(registerTransactionScreen);
 	}
 	
