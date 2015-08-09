@@ -41,6 +41,12 @@ public class RegisterTransactionController extends ScrollPane{
 		toInput = new ArrayList<>();
 		
 		fromInput.add(new RegisterInputFieldController());
+		fromInput.add(new RegisterInputFieldController());
+		fromInput.add(new RegisterInputFieldController());
+		fromInput.add(new RegisterInputFieldController());
+		fromInput.add(new RegisterInputFieldController());
+		fromInput.add(new RegisterInputFieldController());
+		fromInput.add(new RegisterInputFieldController());
 		toInput.add(new RegisterInputFieldController());
 		
 		fromPane.getChildren().setAll(fromInput);
