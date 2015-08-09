@@ -10,7 +10,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 
-public class RegisterInputFieldController extends HBox{
+public class RegisterInputField extends HBox{
 
 	@FXML
 	private DoubleTextField valueField;
@@ -19,7 +19,7 @@ public class RegisterInputFieldController extends HBox{
 	@FXML
 	private ListView<Tag> tagsPane;
 	
-	public RegisterInputFieldController(){
+	public RegisterInputField(){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterInputField.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
