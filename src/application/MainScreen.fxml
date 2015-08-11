@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane minHeight="1050.0" minWidth="1920.0" prefHeight="1050.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainScreenController">
+<fx:root minHeight="1050.0" minWidth="1920.0" prefHeight="1050.0" prefWidth="1920.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane layoutX="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <bottom>
@@ -43,12 +43,7 @@
                   </Label>
                   <VBox alignment="BOTTOM_LEFT">
                      <children>
-                        <MenuButton fx:id="bookMenu" mnemonicParsing="false" text="Book">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                        </MenuButton>
+                        <ChoiceBox fx:id="bookMenu" onMouseReleased="#menuButtonSelection" onTouchReleased="#menuButtonSelection" prefWidth="150.0" />
                      </children>
                   </VBox>
                </children>
@@ -59,4 +54,4 @@
          </center>
       </BorderPane>
    </children>
-</AnchorPane>
+</fx:root>
