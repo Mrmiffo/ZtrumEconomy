@@ -58,14 +58,19 @@ public class MainScreenController extends AnchorPane {
         bookMenu.getItems().addAll(books);
         bookMenu.getSelectionModel().selectedIndexProperty().addListener(
     		new ChangeListener<Number>() {
-            public void changed(ObservableValue ov, Number value, Number new_value) {
-            	try {
-					updateAllScreensWithBook(getSelectedBook());
-				} catch (NoSuchBookException e) {
-					// TODO Auto-generated catch block
-					System.out.println(e.getMessage());
-				}
-            }});       
+	            public void changed(ObservableValue ov, Number value, Number new_value) {
+	            	try {
+						updateAllScreensWithBook(getSelectedBook());
+					} catch (NoSuchBookException e) {
+						// TODO Auto-generated catch block
+						System.out.println(e.getMessage());
+					}
+	            }
+    		}
+		);
+        registerButton.setDisable(true);
+        historyButton.setDisable(true);
+        graphButton.setDisable(true);
         
 	}
 	
@@ -88,6 +93,7 @@ public class MainScreenController extends AnchorPane {
 	 */
 	private void updateAllScreensWithBook(Book book){
 		if (bookMenu.getItems().contains(book)){
+			registerButton.setDisable(false);
             if (centerPanel.getChildren().size() != 0){
             	try {
             		for (Node screen: centerPanel.getChildren())
