@@ -25,7 +25,7 @@ public class AccountTest {
 	 */
 	@Before
 	public void setUp() throws Exception {
-		test = new Account("testAccount", 1, AccountType.CREDIT);
+//		test = new Account("testAccount", 1, AccountType.CREDIT);
 	}
 
 	/**
