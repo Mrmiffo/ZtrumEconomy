@@ -72,13 +72,13 @@ public class Account implements Serializable{
 	}
 	
 	public String toString(){
-		return "ID: " + id + " Name: " + name;
+		return id + ". " + name;
 	}
 	
 	public boolean equals(Object o){
 		if (this == o){
 			return true;
-		} else if (o.getClass() != Account.class){
+		} else if (!(o instanceof Account)){
 			return false;
 		} else if ((this.id == ((Account)o).id) && (this.name == ((Account)o).name) && (this.accType == ((Account)o).accType)){
 			return true;

@@ -104,4 +104,23 @@ public class Book {
 		this.name = name;
 	}
 	
+	public String toString(){
+		return name;
+	}
+	
+	public List<Account> getAllAccounts(){
+		List<Account> toReturn = new ArrayList<>();
+		toReturn.addAll(availableAccounts);
+		return toReturn;
+	}
+	
+	public boolean equals(Object o){
+		if (this == o){
+			return true;
+		} else if (!(o instanceof Book)){
+			return false;
+		} else if (this.getName().equals(((Book)o).getName()) && this.id == ((Book)o).id){
+			return true;
+		} else return false;
+	}
 }
