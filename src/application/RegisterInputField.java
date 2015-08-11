@@ -1,12 +1,13 @@
 package application;
 
 import java.io.IOException;
+import java.util.List;
 
 import bookkeeping.Account;
 import bookkeeping.Tag;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 
@@ -15,11 +16,11 @@ public class RegisterInputField extends HBox{
 	@FXML
 	private DoubleTextField valueField;
 	@FXML
-	private ComboBox<Account> accountDropDown;
+	private ChoiceBox<Account> accountDropDown;
 	@FXML
 	private ListView<Tag> tagsPane;
 	
-	public RegisterInputField(){
+	public RegisterInputField(List<Account> accounts){
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterInputField.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -28,5 +29,10 @@ public class RegisterInputField extends HBox{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+        updateAccounts(accounts);
+	}
+	
+	public void updateAccounts(List<Account> newAccounts){
+		accountDropDown.getItems().setAll(newAccounts);
 	}
 }

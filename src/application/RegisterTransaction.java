@@ -12,7 +12,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 
-public class RegisterTransaction extends ScrollPane implements ICenterScreen{
+public class RegisterTransaction extends AbstractCenterScreen{
 
 	@FXML
 	private TextField titleText;
@@ -26,7 +26,12 @@ public class RegisterTransaction extends ScrollPane implements ICenterScreen{
 	private List<RegisterInputField> fromInput;
 	private List<RegisterInputField> toInput;
 	
-	public RegisterTransaction(){
+	private Book activeBook;
+	
+	public RegisterTransaction(Book book) throws NoSuchBookException{
+		fromInput = new ArrayList<>();
+		toInput = new ArrayList<>();
+		setBook(book);
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RegisterTransaction.fxml"));
 		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
@@ -35,23 +40,30 @@ public class RegisterTransaction extends ScrollPane implements ICenterScreen{
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+		
 	}
 	
 	public void initialize(){
-		fromInput = new ArrayList<>();
-		toInput = new ArrayList<>();
 		
-		fromInput.add(new RegisterInputField());
-		toInput.add(new RegisterInputField());
+		fromInput.add(new RegisterInputField(activeBook.getAllAccounts()));
+		toInput.add(new RegisterInputField(activeBook.getAllAccounts()));
 		
 		fromPane.getChildren().setAll(fromInput);
 		toPane.getChildren().setAll(toInput);
 
 	}
-
 	@Override
-	public void setBook(Book book) {
-		// TODO Auto-generated method stub
+	public void setBook(Book book) throws NoSuchBookException {
+		if (book == null){
+			throw new NoSuchBookException("Book can't be null");
+		}
+		activeBook = book;
+		for (RegisterInputField input: fromInput){
+			input.updateAccounts(activeBook.getAllAccounts());
+		}
+		for (RegisterInputField input: toInput){
+			input.updateAccounts(activeBook.getAllAccounts());
+		}
 		
 	}
 

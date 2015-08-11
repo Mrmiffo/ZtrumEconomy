@@ -16,7 +16,7 @@
                   <Label text="Value:" />
                   <DoubleTextField fx:id="valueField" promptText="Value" />
                   <Label text="Account:" />
-                  <ChoiceBox prefWidth="150.0" />
+                  <ChoiceBox fx:id="accountDropDown" prefWidth="150.0" />
                   <Label text="Tags:" />
                </children>
                <padding>
