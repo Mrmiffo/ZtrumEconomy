@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import bookkeeping.Account;
@@ -34,5 +35,24 @@ public class RegisterInputField extends HBox{
 	
 	public void updateAccounts(List<Account> newAccounts){
 		accountDropDown.getItems().setAll(newAccounts);
+	}
+	
+	public double getValue(){
+		if (valueField.getText().equals("")){
+			return 0;
+		} else return Double.parseDouble(valueField.getText());
+	}
+	
+	public Account getAccount(){
+		int toReturn = accountDropDown.getSelectionModel().getSelectedIndex();
+		if (toReturn == -1){
+			return null;
+		} else return accountDropDown.getItems().get(toReturn);
+	}
+	
+	public List<Tag> getTags(){
+		ArrayList<Tag> toReturn = new ArrayList<>();
+		toReturn.addAll(tagsPane.getItems());
+		return toReturn;
 	}
 }
